@@ -1,0 +1,219 @@
+{
+  "name": "mlops-end2end-advanced-retraining",
+  "category": "machine-learning",
+  "title": "MLOps End-to-End Advanced with Automated Retraining",
+  "description": "Complete MLOps implementation with drift detection and automated retraining. Extends the standard MLOps demo by closing the loop from drift detection to automated model updates.",
+  "fullDescription": "This advanced demo demonstrates enterprise-grade MLOps patterns including automated model retraining, ground truth integration for production accuracy tracking, and business impact analysis. Built on top of Unity Catalog, MLflow, and Lakehouse Monitoring, it showcases how to maintain model quality in production with minimal manual intervention.",
+  "usecase": "Data Science & ML",
+  "products": ["Unity Catalog", "MLflow", "Lakehouse Monitoring", "Model Serving", "Databricks Jobs"],
+  "related_links": [
+    {"title": "MLflow Documentation", "url": "https://docs.databricks.com/mlflow/"},
+    {"title": "Unity Catalog Models", "url": "https://docs.databricks.com/machine-learning/manage-model-lifecycle/"},
+    {"title": "Lakehouse Monitoring", "url": "https://docs.databricks.com/lakehouse-monitoring/"}
+  ],
+  "recommended_cluster": {
+    "spark_version": "14.3.x-cpu-ml-scala2.12",
+    "node_type_id": "i3.xlarge",
+    "num_workers": 2,
+    "data_security_mode": "USER_ISOLATION"
+  },
+  "default_catalog": "mlops_advanced",
+  "default_schema": "churn_demo",
+  "notebooks": [
+    {
+      "path": "00_mlops_end2end_advanced_presentation",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": false,
+      "title": "MLOps Overview and Architecture",
+      "description": "Complete architecture overview and introduction to the automated MLOps lifecycle"
+    },
+    {
+      "path": "01_feature_engineering",
+      "pre_run": true,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Feature Engineering with Feature Store",
+      "description": "Transform raw customer data into ML features with Unity Catalog Feature Store",
+      "parameters": {
+        "reset_all_data": "false"
+      }
+    },
+    {
+      "path": "02_model_training_hpo",
+      "pre_run": true,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Model Training with Hyperparameter Optimization",
+      "description": "Train LightGBM model with Optuna hyperparameter optimization",
+      "parameters": {
+        "reset_all_data": "false"
+      },
+      "libraries": [
+        {"pypi": {"package": "optuna"}},
+        {"pypi": {"package": "lightgbm"}},
+        {"pypi": {"package": "scikit-learn"}}
+      ]
+    },
+    {
+      "path": "03_model_registration",
+      "pre_run": true,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Model Registration to Unity Catalog",
+      "description": "Register trained model with governance metadata and Challenger alias",
+      "parameters": {
+        "reset_all_data": "false"
+      },
+      "libraries": [
+        {"pypi": {"package": "lightgbm"}}
+      ]
+    },
+    {
+      "path": "04a_challenger_validation",
+      "pre_run": true,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Automated Model Validation",
+      "description": "7-stage validation framework with realistic quality gates for production",
+      "parameters": {
+        "reset_all_data": "false"
+      },
+      "libraries": [
+        {"pypi": {"package": "lightgbm"}},
+        {"pypi": {"package": "scikit-learn"}}
+      ]
+    },
+    {
+      "path": "04b_challenger_approval",
+      "pre_run": true,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Model Approval and Promotion",
+      "description": "Automated promotion workflow from Challenger to Champion",
+      "parameters": {
+        "reset_all_data": "false"
+      }
+    },
+    {
+      "path": "05_batch_inference",
+      "pre_run": true,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Batch Inference at Scale",
+      "description": "Distributed batch scoring with business impact analysis and ROI calculations",
+      "parameters": {
+        "reset_all_data": "false"
+      },
+      "libraries": [
+        {"pypi": {"package": "lightgbm"}}
+      ]
+    },
+    {
+      "path": "06_model_serving",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Real-Time Model Serving",
+      "description": "Deploy REST API endpoint with auto-scaling and scale-to-zero",
+      "parameters": {
+        "reset_all_data": "false"
+      },
+      "libraries": [
+        {"pypi": {"package": "databricks-sdk"}}
+      ]
+    },
+    {
+      "path": "07_model_monitoring",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Production Monitoring with Drift Detection",
+      "description": "Lakehouse Monitoring with ground truth integration for real accuracy tracking",
+      "parameters": {
+        "reset_all_data": "false"
+      },
+      "libraries": [
+        {"pypi": {"package": "lightgbm"}}
+      ]
+    },
+    {
+      "path": "08_automated_retraining",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Automated Model Retraining",
+      "description": "Complete retraining workflow triggered by drift or performance degradation",
+      "parameters": {
+        "reset_all_data": "false"
+      },
+      "libraries": [
+        {"pypi": {"package": "lightgbm"}},
+        {"pypi": {"package": "optuna"}},
+        {"pypi": {"package": "scikit-learn"}}
+      ]
+    },
+    {
+      "path": "09_deployment_job",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Automated Deployment Job",
+      "description": "Create orchestrated Databricks Job for end-to-end pipeline automation",
+      "parameters": {
+        "reset_all_data": "false"
+      },
+      "libraries": [
+        {"pypi": {"package": "databricks-sdk"}}
+      ]
+    }
+  ],
+  "init_job": {
+    "settings": {
+      "name": "mlops_advanced_init",
+      "email_notifications": {},
+      "timeout_seconds": 0,
+      "max_concurrent_runs": 1,
+      "tasks": [
+        {
+          "task_key": "init_data",
+          "notebook_task": {
+            "notebook_path": "{{DEMO_FOLDER}}/_resources/00-load-data",
+            "base_parameters": {
+              "reset_all_data": "true"
+            }
+          },
+          "job_cluster_key": "init_cluster",
+          "timeout_seconds": 0,
+          "email_notifications": {}
+        }
+      ],
+      "job_clusters": [
+        {
+          "job_cluster_key": "init_cluster",
+          "new_cluster": {
+            "spark_version": "14.3.x-cpu-ml-scala2.12",
+            "node_type_id": "i3.xlarge",
+            "num_workers": 2,
+            "data_security_mode": "USER_ISOLATION"
+          }
+        }
+      ]
+    }
+  },
+  "cluster": {
+    "num_workers": 2,
+    "spark_version": "14.3.x-cpu-ml-scala2.12",
+    "node_type_id": "i3.xlarge",
+    "data_security_mode": "USER_ISOLATION"
+  },
+  "pipelines": [],
+  "dashboards": [],
+  "data_folders": [
+    {
+      "source_folder": "data",
+      "target_folder": "/dbdemos/ml/mlops_advanced/"
+    }
+  ],
+  "images_folder": "images/ml/mlops_advanced_retraining"
+}

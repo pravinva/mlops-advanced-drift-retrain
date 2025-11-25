@@ -1,0 +1,169 @@
+{
+  "title": "MLOps End-to-End Pipeline - Advanced with Automated Retraining",
+  "description": "Production-grade MLOps implementation with drift detection and automated retraining. Complete lifecycle: feature engineering → training → validation → deployment → monitoring → retraining.",
+  "bundle": true,
+  "tags": [
+    "mlops",
+    "advanced",
+    "ml",
+    "production",
+    "drift-detection",
+    "automated-retraining",
+    "unity-catalog",
+    "feature-store",
+    "monitoring"
+  ],
+  "catalog": "mlops_advanced",
+  "schema": "churn_demo",
+  "notebooks": [
+    {
+      "path": "00_mlops_end2end_advanced_presentation",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": false,
+      "title": "MLOps Overview and Architecture",
+      "description": "Complete architecture overview, feature highlights, and navigation guide for the production MLOps implementation"
+    },
+    {
+      "path": "notebook-00-setup",
+      "pre_run": true,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Setup and Configuration",
+      "description": "Initialize Unity Catalog, create schema, load IBM Telco dataset, configure MLflow"
+    },
+    {
+      "path": "notebook-01-features-enhanced",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Feature Engineering with Feature Store",
+      "description": "Transform raw data into ML features with Unity Catalog Feature Store integration"
+    },
+    {
+      "path": "notebook-02-training",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Model Training with Hyperparameter Optimization",
+      "description": "Train LightGBM model with Optuna hyperparameter optimization (50 trials)"
+    },
+    {
+      "path": "notebook-03b-registration",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Model Registration to Unity Catalog",
+      "description": "Register trained model with governance metadata and Challenger alias"
+    },
+    {
+      "path": "notebook-04a-validation",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Automated Model Validation (7 Quality Gates)",
+      "description": "Comprehensive validation: performance, confusion matrix, latency, robustness, comparison"
+    },
+    {
+      "path": "notebook-04b-approval",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Model Approval and Promotion Workflow",
+      "description": "Automated promotion from Challenger to Champion based on validation results"
+    },
+    {
+      "path": "notebook-05-batch-inference",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Batch Inference at Scale",
+      "description": "Distributed batch scoring with Spark UDFs, business impact analysis, ROI calculation"
+    },
+    {
+      "path": "notebook-06-serving",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Real-Time Model Serving",
+      "description": "Deploy REST API endpoint with auto-scaling and scale-to-zero configuration"
+    },
+    {
+      "path": "notebook-07-monitoring",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Production Monitoring and Drift Detection",
+      "description": "Lakehouse Monitoring with ground truth integration, drift detection, performance tracking"
+    },
+    {
+      "path": "notebook-08-retrain",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Automated Retraining Pipeline",
+      "description": "Complete retraining workflow triggered by drift or performance degradation"
+    },
+    {
+      "path": "notebook-03a-deployment",
+      "pre_run": false,
+      "publish_on_website": true,
+      "add_cluster_setup_cell": true,
+      "title": "Automated Deployment Job",
+      "description": "Create orchestrated Databricks Job for end-to-end pipeline automation"
+    }
+  ],
+  "cluster": {
+    "num_workers": 2,
+    "spark_version": "14.3.x-cpu-ml-scala2.12",
+    "node_type_id": "i3.xlarge",
+    "data_security_mode": "USER_ISOLATION",
+    "runtime_engine": "STANDARD"
+  },
+  "pipelines": [],
+  "init_job": {
+    "settings": {
+      "name": "mlops_advanced_init",
+      "max_concurrent_runs": 1,
+      "tasks": [
+        {
+          "task_key": "init_data",
+          "notebook_task": {
+            "notebook_path": "{{DEMO_FOLDER}}/notebook-00-setup",
+            "source": "WORKSPACE"
+          },
+          "job_cluster_key": "mlops_cluster",
+          "timeout_seconds": 600
+        }
+      ],
+      "job_clusters": [
+        {
+          "job_cluster_key": "mlops_cluster",
+          "new_cluster": {
+            "spark_version": "14.3.x-cpu-ml-scala2.12",
+            "node_type_id": "i3.xlarge",
+            "num_workers": 2,
+            "data_security_mode": "USER_ISOLATION"
+          }
+        }
+      ]
+    }
+  },
+  "custom_parameters": {
+    "catalog_name": {
+      "type": "string",
+      "default": "art_mlops",
+      "description": "Unity Catalog name for MLOps implementation"
+    },
+    "schema_name": {
+      "type": "string",
+      "default": "mlops_churn_demo",
+      "description": "Schema name for tables and features"
+    },
+    "model_name_prefix": {
+      "type": "string",
+      "default": "churn_model",
+      "description": "Prefix for model name in Unity Catalog"
+    }
+  }
+}

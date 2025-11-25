@@ -4,7 +4,7 @@
 # MAGIC
 # MAGIC ## Production-Grade ML System with Automated Drift Detection and Retraining
 # MAGIC
-# MAGIC <img src="https://github.com/databricks-demos/dbdemos-resources/raw/main/images/product/mlops/mlops-uc-end2end-advanced-0.png" width="1200px" style="float: right; margin-left: 10px" />
+# MAGIC <img src="https://github.com/pravinva/mlops-advanced-drift-retrain/raw/main/diagrams/mlops-advanced-0-overview.png" width="1200px" style="float: right; margin-left: 10px" />
 # MAGIC
 # MAGIC Building production ML systems requires more than just training models. This comprehensive implementation demonstrates enterprise-grade MLOps practices including:
 # MAGIC
@@ -41,7 +41,7 @@
 # MAGIC %md
 # MAGIC ## Architecture Overview
 # MAGIC
-# MAGIC <img src="https://github.com/databricks-demos/dbdemos-resources/raw/main/images/product/mlops/mlops-uc-end2end-flow-1.png" width="1200px" />
+# MAGIC <img src="https://github.com/pravinva/mlops-advanced-drift-retrain/raw/main/diagrams/mlops-advanced-0-overview.png" width="1200px" />
 # MAGIC
 # MAGIC ### The Complete MLOps Loop
 # MAGIC

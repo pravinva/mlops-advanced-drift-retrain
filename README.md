@@ -323,11 +323,15 @@ mlops-advanced/
 │   ├── *.html                                # HTML diagrams
 │   ├── *.png                                 # PNG exports
 │   └── README.md                             # Diagram guide
+├── docs/                                      # Documentation (NEW)
+│   ├── TESTING.md                            # Test procedures
+│   ├── DBDEMOS_SUBMISSION.md                 # Submission guide
+│   ├── DIAGRAMS_GUIDE.md                     # Diagram documentation
+│   ├── INSTALL.md                            # Installation guide
+│   ├── ENHANCEMENTS_AND_CONTRIBUTIONS.md     # Enhancement details
+│   └── DBDEMOS_PROPOSAL.md                   # Proposal document
 ├── diagram_generator.py                       # Diagram generator (NEW)
 ├── html_to_png_converter.py                  # PNG converter (NEW)
-├── DIAGRAMS_GUIDE.md                         # Diagram documentation (NEW)
-├── TESTING.md                                # Test procedures (TODO)
-├── DBDEMOS_SUBMISSION.md                     # Submission guide (TODO)
 └── README.md                                 # This file
 ```
 
@@ -373,8 +377,10 @@ This demo is provided as-is for educational and demonstration purposes.
 ##  Support
 
 - **Issues:** [GitHub Issues](https://github.com/pravinva/mlops-advanced-drift-retrain/issues)
-- **Documentation:** See `DIAGRAMS_GUIDE.md` for diagram details
-- **Testing:** See `TESTING.md` for test procedures
+- **Documentation:** See `docs/` directory for detailed guides
+  - Testing: `docs/TESTING.md`
+  - Submission: `docs/DBDEMOS_SUBMISSION.md`
+  - Diagrams: `docs/DIAGRAMS_GUIDE.md`
 
 ---
 

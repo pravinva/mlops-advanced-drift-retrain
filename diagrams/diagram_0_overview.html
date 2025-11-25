@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOps Diagram - diagram_0_overview.html</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: 'Barlow', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap');
+
+      .db-title {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        fill: #1B3139;
+      }
+
+      .db-label {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        fill: #1B3139;
+      }
+
+      .db-text {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        fill: #666666;
+      }
+
+      .db-highlight {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        fill: #00A8E1;
+      }
+
+      .db-box {
+        fill: #FFFFFF;
+        stroke: #00A8E1;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-box-feature {
+        fill: #F5F5F5;
+        stroke: #1B3139;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-arrow {
+        stroke: #00A8E1;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+
+      .db-arrow-highlight {
+        stroke: #FF3621;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead-lava);
+      }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00A8E1" />
+    </marker>
+
+    <marker id="arrowhead-lava" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF3621" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="800" fill="#FFFFFF"/>
+  <text x="600" y="40" class="db-title" text-anchor="middle">MLOps Advanced - Complete Lifecycle with Automated Retraining</text>
+  <rect x="50" y="100" width="150" height="80" class="db-box"/>
+  <text x="125.0" y="130.0" class="db-label" text-anchor="middle">Raw Data</text>
+  <text x="125.0" y="150.0" class="db-label" text-anchor="middle">IBM Telco</text>
+  <line x1="200" y1="140" x2="250" y2="140" class="db-arrow"/>
+  <rect x="250" y="100" width="180" height="80" class="db-box"/>
+  <text x="340.0" y="120.0" class="db-label" text-anchor="middle">Feature</text>
+  <text x="340.0" y="140.0" class="db-label" text-anchor="middle">Engineering</text>
+  <text x="340.0" y="160.0" class="db-label" text-anchor="middle">Unity Catalog</text>
+  <line x1="430" y1="140" x2="480" y2="140" class="db-arrow"/>
+  <rect x="480" y="100" width="200" height="80" class="db-box"/>
+  <text x="580.0" y="120.0" class="db-label" text-anchor="middle">Training + HPO</text>
+  <text x="580.0" y="140.0" class="db-label" text-anchor="middle">Optuna 50 trials</text>
+  <text x="580.0" y="160.0" class="db-label" text-anchor="middle">LightGBM</text>
+  <line x1="680" y1="140" x2="730" y2="140" class="db-arrow"/>
+  <rect x="730" y="100" width="180" height="80" class="db-box"/>
+  <text x="820.0" y="120.0" class="db-label" text-anchor="middle">Unity Catalog</text>
+  <text x="820.0" y="140.0" class="db-label" text-anchor="middle">Champion/</text>
+  <text x="820.0" y="160.0" class="db-label" text-anchor="middle">Challenger</text>
+  <line x1="910" y1="140" x2="960" y2="140" class="db-arrow"/>
+  <rect x="960" y="100" width="200" height="80" class="db-box"/>
+  <text x="1060.0" y="120.0" class="db-label" text-anchor="middle">7-Stage</text>
+  <text x="1060.0" y="140.0" class="db-label" text-anchor="middle">Validation</text>
+  <text x="1060.0" y="160.0" class="db-label" text-anchor="middle">(04a)</text>
+  <line x1="1060" y1="180" x2="1060" y2="230" class="db-arrow"/>
+  <rect x="960" y="230" width="200" height="80" class="db-box"/>
+  <text x="1060.0" y="260.0" class="db-label" text-anchor="middle">Auto-Promotion</text>
+  <text x="1060.0" y="280.0" class="db-label" text-anchor="middle">(04b)</text>
+  <line x1="1060" y1="310" x2="1060" y2="360" class="db-arrow"/>
+  <rect x="880" y="360" width="360" height="80" class="db-box"/>
+  <text x="1060.0" y="390.0" class="db-label" text-anchor="middle">Batch Inference (Champion Model)</text>
+  <text x="1060.0" y="410.0" class="db-label" text-anchor="middle">Distributed Spark • Business Impact</text>
+  <line x1="1060" y1="440" x2="1060" y2="490" class="db-arrow"/>
+  <rect x="730" y="490" width="560" height="100" class="db-box-feature"/>
+  <text x="1010.0" y="530.0" class="db-label" text-anchor="middle">Production Monitoring + Ground Truth (3mo delay)</text>
+  <text x="1010.0" y="550.0" class="db-label" text-anchor="middle">Real F1/Precision/Recall • Feature Drift • Prediction Drift</text>
+  <line x1="1010" y1="590" x2="1010" y2="640" class="db-arrow"/>
+  <rect x="730" y="640" width="560" height="80" class="db-box"/>
+  <text x="1010.0" y="670.0" class="db-label" text-anchor="middle">Drift Detection: 6 Triggers</text>
+  <text x="1010.0" y="690.0" class="db-label" text-anchor="middle">PSI>0.25 • F1 Drop>5% • Null Spike • Time-based</text>
+  <line x1="730" y1="680" x2="400" y2="680" class="db-arrow-highlight"/>
+  <line x1="400" y1="680" x2="400" y2="90" class="db-arrow-highlight"/>
+  <line x1="400" y1="90" x2="480" y2="90" class="db-arrow-highlight"/>
+  <text x="565" y="700" class="db-highlight" text-anchor="middle">⟲ Automated Retraining Loop</text>
+  <text x="200" y="550" class="db-highlight" text-anchor="middle">✓ Ground Truth Integration</text>
+  <text x="600" y="550" class="db-highlight" text-anchor="middle">✓ Real Accuracy Tracking</text>
+  <text x="1000" y="550" class="db-highlight" text-anchor="middle">✓ Closed-Loop MLOps</text>
+</svg>
+</body>
+</html>

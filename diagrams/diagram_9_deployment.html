@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOps Diagram - diagram_9_deployment.html</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: 'Barlow', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <svg width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap');
+
+      .db-title {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        fill: #1B3139;
+      }
+
+      .db-label {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        fill: #1B3139;
+      }
+
+      .db-text {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        fill: #666666;
+      }
+
+      .db-highlight {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        fill: #00A8E1;
+      }
+
+      .db-box {
+        fill: #FFFFFF;
+        stroke: #00A8E1;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-box-feature {
+        fill: #F5F5F5;
+        stroke: #1B3139;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-arrow {
+        stroke: #00A8E1;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+
+      .db-arrow-highlight {
+        stroke: #FF3621;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead-lava);
+      }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00A8E1" />
+    </marker>
+
+    <marker id="arrowhead-lava" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF3621" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="600" fill="#FFFFFF"/>
+  <text x="600" y="40" class="db-title" text-anchor="middle">Databricks Job: End-to-End MLOps Pipeline Orchestration</text>
+  <rect x="300" y="80" width="600" height="60" class="db-box-feature"/>
+  <text x="600.0" y="110.0" class="db-label" text-anchor="middle">Databricks Job: mlops_churn_pipeline</text>
+  <line x1="600" y1="140" x2="600" y2="180" class="db-arrow"/>
+  <rect x="350" y="180" width="500" height="60" class="db-box"/>
+  <text x="600.0" y="210.0" class="db-label" text-anchor="middle">Task 1: Feature Engineering</text>
+  <line x1="600" y1="240" x2="600" y2="260" class="db-arrow"/>
+  <rect x="350" y="260" width="500" height="60" class="db-box"/>
+  <text x="600.0" y="290.0" class="db-label" text-anchor="middle">Task 2: Model Training (HPO)</text>
+  <line x1="600" y1="320" x2="600" y2="340" class="db-arrow"/>
+  <rect x="350" y="340" width="500" height="60" class="db-box"/>
+  <text x="600.0" y="370.0" class="db-label" text-anchor="middle">Task 3: Model Registration</text>
+  <line x1="600" y1="400" x2="600" y2="420" class="db-arrow"/>
+  <rect x="350" y="420" width="500" height="60" class="db-box"/>
+  <text x="600.0" y="450.0" class="db-label" text-anchor="middle">Task 4: Challenger Validation</text>
+  <line x1="600" y1="480" x2="600" y2="500" class="db-arrow"/>
+  <rect x="350" y="500" width="500" height="60" class="db-box"/>
+  <text x="600.0" y="530.0" class="db-label" text-anchor="middle">Task 5: Challenger Approval</text>
+  <line x1="600" y1="560" x2="600" y2="580" class="db-arrow"/>
+  <rect x="100" y="220" width="200" height="180" class="db-box-feature"/>
+  <text x="200.0" y="310.0" class="db-label" text-anchor="middle"></text>
+  <text x="200" y="250" class="db-label" text-anchor="middle">Features</text>
+  <text x="120" y="280" class="db-text">• Cluster config</text>
+  <text x="120" y="305" class="db-text">• Dependencies</text>
+  <text x="120" y="330" class="db-text">• Timeouts</text>
+  <text x="120" y="355" class="db-text">• Max retries</text>
+  <text x="120" y="380" class="db-text">• Email alerts</text>
+  <rect x="900" y="220" width="200" height="180" class="db-box-feature"/>
+  <text x="1000.0" y="310.0" class="db-label" text-anchor="middle"></text>
+  <text x="1000" y="250" class="db-label" text-anchor="middle">Scheduling</text>
+  <text x="920" y="280" class="db-text">• Manual trigger</text>
+  <text x="920" y="305" class="db-text">• Cron schedule</text>
+  <text x="920" y="330" class="db-text">• Drift alerts</text>
+  <text x="920" y="355" class="db-text">• API triggered</text>
+  <text x="920" y="380" class="db-text">• CI/CD pipeline</text>
+  <text x="350" y="50" class="db-highlight" text-anchor="middle">Fully orchestrated: One-click execution</text>
+  <text x="750" y="50" class="db-highlight" text-anchor="middle">Production-ready: Email notifications, retries, monitoring</text>
+</svg>
+</body>
+</html>

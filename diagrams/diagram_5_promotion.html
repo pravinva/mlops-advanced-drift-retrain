@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOps Diagram - diagram_5_promotion.html</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: 'Barlow', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <svg width="1200" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap');
+
+      .db-title {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        fill: #1B3139;
+      }
+
+      .db-label {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        fill: #1B3139;
+      }
+
+      .db-text {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        fill: #666666;
+      }
+
+      .db-highlight {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        fill: #00A8E1;
+      }
+
+      .db-box {
+        fill: #FFFFFF;
+        stroke: #00A8E1;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-box-feature {
+        fill: #F5F5F5;
+        stroke: #1B3139;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-arrow {
+        stroke: #00A8E1;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+
+      .db-arrow-highlight {
+        stroke: #FF3621;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead-lava);
+      }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00A8E1" />
+    </marker>
+
+    <marker id="arrowhead-lava" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF3621" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="500" fill="#FFFFFF"/>
+  <text x="600" y="40" class="db-title" text-anchor="middle">Automated Promotion Workflow</text>
+  <rect x="480" y="80" width="240" height="60" class="db-box"/>
+  <text x="600.0" y="100.0" class="db-label" text-anchor="middle">Validation Results</text>
+  <text x="600.0" y="120.0" class="db-label" text-anchor="middle">from 04a</text>
+  <line x1="600" y1="140" x2="600" y2="180" class="db-arrow"/>
+  <rect x="400" y="180" width="400" height="80" class="db-box"/>
+  <text x="600.0" y="200.0" class="db-label" text-anchor="middle">Decision Logic:</text>
+  <text x="600.0" y="220.0" class="db-label" text-anchor="middle">IF validation PASSED</text>
+  <text x="600.0" y="240.0" class="db-label" text-anchor="middle">AND (no Champion OR F1 improved)</text>
+  <line x1="600" y1="260" x2="600" y2="300" class="db-arrow"/>
+  <rect x="300" y="300" width="600" height="120" class="db-box-feature"/>
+  <text x="600.0" y="360.0" class="db-label" text-anchor="middle"></text>
+  <text x="600" y="330" class="db-label" text-anchor="middle">Promotion Workflow</text>
+  <text x="320" y="360" class="db-text">1. Archive: Champion → Previous_Champion</text>
+  <text x="320" y="385" class="db-text">2. Promote: Challenger → Champion</text>
+  <text x="320" y="410" class="db-text">3. Remove: Challenger alias</text>
+  <line x1="600" y1="420" x2="600" y2="460" class="db-arrow"/>
+  <rect x="400" y="460" width="400" height="40" class="db-box"/>
+  <text x="600.0" y="480.0" class="db-label" text-anchor="middle">Production Ready @Champion</text>
+  <text x="600" y="40" class="db-highlight" text-anchor="middle">Zero-downtime promotion with rollback capability</text>
+</svg>
+</body>
+</html>

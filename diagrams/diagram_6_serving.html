@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOps Diagram - diagram_6_serving.html</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: 'Barlow', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <svg width="1200" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap');
+
+      .db-title {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        fill: #1B3139;
+      }
+
+      .db-label {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        fill: #1B3139;
+      }
+
+      .db-text {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        fill: #666666;
+      }
+
+      .db-highlight {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        fill: #00A8E1;
+      }
+
+      .db-box {
+        fill: #FFFFFF;
+        stroke: #00A8E1;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-box-feature {
+        fill: #F5F5F5;
+        stroke: #1B3139;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-arrow {
+        stroke: #00A8E1;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+
+      .db-arrow-highlight {
+        stroke: #FF3621;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead-lava);
+      }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00A8E1" />
+    </marker>
+
+    <marker id="arrowhead-lava" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF3621" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="500" fill="#FFFFFF"/>
+  <text x="600" y="40" class="db-title" text-anchor="middle">Real-Time Model Serving with Auto-Scaling</text>
+  <rect x="100" y="150" width="200" height="80" class="db-box"/>
+  <text x="200.0" y="190.0" class="db-label" text-anchor="middle">Unity Catalog\n@Champion\nModel</text>
+  <line x1="300" y1="190" x2="370" y2="190" class="db-arrow"/>
+  <rect x="370" y="100" width="460" height="180" class="db-box-feature"/>
+  <text x="600.0" y="190.0" class="db-label" text-anchor="middle"></text>
+  <text x="600" y="130" class="db-label" text-anchor="middle">Model Serving Endpoint</text>
+  <text x="390" y="160" class="db-text">• REST API with auto-scaling</text>
+  <text x="390" y="185" class="db-text">• Scale-to-zero enabled (cost-effective)</text>
+  <text x="390" y="210" class="db-text">• Workload size: Small/Medium/Large</text>
+  <text x="390" y="235" class="db-text">• Automatic inference logging</text>
+  <text x="390" y="260" class="db-text">• Latency: <50ms P95</text>
+  <line x1="600" y1="280" x2="600" y2="330" class="db-arrow"/>
+  <rect x="420" y="330" width="360" height="80" class="db-box"/>
+  <text x="600.0" y="370.0" class="db-label" text-anchor="middle">Inference Table\n(Auto-generated)\nLogged predictions + inputs</text>
+  <line x1="830" y1="190" x2="900" y2="140" class="db-arrow"/>
+  <rect x="900" y="100" width="200" height="80" class="db-box"/>
+  <text x="1000.0" y="140.0" class="db-label" text-anchor="middle">API Clients\nPython • cURL\nJavaScript</text>
+  <text x="300" y="50" class="db-highlight" text-anchor="middle">Optional: Use if real-time predictions needed</text>
+  <text x="800" y="50" class="db-highlight" text-anchor="middle">Otherwise use Batch Inference (Notebook 05)</text>
+</svg>
+</body>
+</html>

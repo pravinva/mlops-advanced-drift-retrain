@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOps Diagram - diagram_8_retraining.html</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: 'Barlow', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <svg width="1200" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap');
+
+      .db-title {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        fill: #1B3139;
+      }
+
+      .db-label {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        fill: #1B3139;
+      }
+
+      .db-text {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        fill: #666666;
+      }
+
+      .db-highlight {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        fill: #00A8E1;
+      }
+
+      .db-box {
+        fill: #FFFFFF;
+        stroke: #00A8E1;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-box-feature {
+        fill: #F5F5F5;
+        stroke: #1B3139;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-arrow {
+        stroke: #00A8E1;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+
+      .db-arrow-highlight {
+        stroke: #FF3621;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead-lava);
+      }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00A8E1" />
+    </marker>
+
+    <marker id="arrowhead-lava" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF3621" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+  <text x="600" y="40" class="db-title" text-anchor="middle">Automated Retraining: 6 Triggers + Orchestrated Deployment</text>
+  <rect x="50" y="80" width="1100" height="180" class="db-box-feature"/>
+  <text x="600.0" y="170.0" class="db-label" text-anchor="middle"></text>
+  <text x="600" y="110" class="db-label" text-anchor="middle">6 Retraining Triggers (OR logic)</text>
+  <text x="70" y="140" class="db-text">1. Feature Drift: PSI > 0.25</text>
+  <text x="70" y="165" class="db-text">2. Prediction Drift: Distribution shift</text>
+  <text x="70" y="190" class="db-text">3. Null Spike: >5% increase in nulls</text>
+  <text x="70" y="215" class="db-text">4. F1 Drop: Production F1 < training F1 by 5%+</text>
+  <text x="70" y="240" class="db-text">5. Data Quality: Schema changes, range violations</text>
+  <text x="70" y="265" class="db-text">6. Monthly Fallback: Retrain every 30 days (even if no alerts)</text>
+  <line x1="600" y1="260" x2="600" y2="300" class="db-arrow"/>
+  <rect x="200" y="300" width="800" height="60" class="db-box-feature"/>
+  <text x="600.0" y="330.0" class="db-label" text-anchor="middle">Databricks Job: mlops_churn_pipeline</text>
+  <line x1="600" y1="360" x2="600" y2="400" class="db-arrow"/>
+  <rect x="50" y="400" width="1100" height="180" class="db-box"/>
+  <text x="600.0" y="490.0" class="db-label" text-anchor="middle"></text>
+  <text x="600" y="430" class="db-label" text-anchor="middle">6-Task Orchestrated Workflow</text>
+  <text x="70" y="460" class="db-text">Task 1: Feature Engineering → Task 2: Model Training (HPO)</text>
+  <text x="70" y="485" class="db-text">Task 3: Model Registration → Task 4: Challenger Validation (7 tests)</text>
+  <text x="70" y="510" class="db-text">Task 5: Challenger Approval → Task 6: Batch Inference</text>
+  <text x="70" y="540" class="db-highlight">Quality Gates:</text>
+  <text x="70" y="565" class="db-text">• All 7 validation tests PASS + F1 improvement → Promote to @Champion</text>
+  <line x1="600" y1="580" x2="600" y2="620" class="db-arrow"/>
+  <rect x="350" y="620" width="500" height="60" class="db-box"/>
+  <text x="600.0" y="650.0" class="db-label" text-anchor="middle">New @Champion in Production\nZero-downtime deployment • Rollback ready</text>
+  <text x="600" y="50" class="db-highlight" text-anchor="middle">Fully automated: Trigger → Train → Test → Deploy</text>
+</svg>
+</body>
+</html>

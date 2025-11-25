@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOps Diagram - diagram_7_monitoring.html</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: 'Barlow', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <svg width="1200" height="650" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap');
+
+      .db-title {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        fill: #1B3139;
+      }
+
+      .db-label {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        fill: #1B3139;
+      }
+
+      .db-text {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        fill: #666666;
+      }
+
+      .db-highlight {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        fill: #00A8E1;
+      }
+
+      .db-box {
+        fill: #FFFFFF;
+        stroke: #00A8E1;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-box-feature {
+        fill: #F5F5F5;
+        stroke: #1B3139;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-arrow {
+        stroke: #00A8E1;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+
+      .db-arrow-highlight {
+        stroke: #FF3621;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead-lava);
+      }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00A8E1" />
+    </marker>
+
+    <marker id="arrowhead-lava" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF3621" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="650" fill="#FFFFFF"/>
+  <text x="600" y="40" class="db-title" text-anchor="middle">Production Monitoring: Lakehouse Monitoring + Ground Truth</text>
+  <rect x="100" y="100" width="200" height="80" class="db-box"/>
+  <text x="200.0" y="140.0" class="db-label" text-anchor="middle">Prediction Table\nweekly_churn_\nscores</text>
+  <line x1="300" y1="140" x2="370" y2="140" class="db-arrow"/>
+  <rect x="370" y="80" width="460" height="120" class="db-box-feature"/>
+  <text x="600.0" y="140.0" class="db-label" text-anchor="middle"></text>
+  <text x="600" y="110" class="db-label" text-anchor="middle">Lakehouse Monitoring</text>
+  <text x="390" y="140" class="db-text">• PSI (Population Stability Index)</text>
+  <text x="390" y="165" class="db-text">• KS-test for distribution shifts</text>
+  <text x="390" y="190" class="db-text">• Null % tracking, freshness checks</text>
+  <line x1="600" y1="200" x2="600" y2="250" class="db-arrow"/>
+  <rect x="370" y="250" width="460" height="140" class="db-box-feature"/>
+  <text x="600.0" y="320.0" class="db-label" text-anchor="middle"></text>
+  <text x="600" y="280" class="db-label" text-anchor="middle">Ground Truth Integration (3-month lag)</text>
+  <text x="390" y="310" class="db-text">August predictions → November outcomes known</text>
+  <text x="390" y="335" class="db-text">Join: prediction_id + member_id</text>
+  <text x="390" y="360" class="db-text">Calculate: Production F1, Precision, Recall</text>
+  <text x="390" y="385" class="db-text">Alert: If metrics < training by 5%+</text>
+  <line x1="600" y1="390" x2="600" y2="440" class="db-arrow"/>
+  <rect x="250" y="440" width="700" height="100" class="db-box"/>
+  <text x="600.0" y="490.0" class="db-label" text-anchor="middle">Unified Monitoring Dashboard\nFeature Drift • Prediction Distribution • Production Accuracy\nAccessible to: Data Scientists, ML Engineers, Business Stakeholders</text>
+  <line x1="600" y1="540" x2="600" y2="580" class="db-arrow"/>
+  <rect x="420" y="580" width="360" height="50" class="db-box-feature"/>
+  <text x="600.0" y="605.0" class="db-label" text-anchor="middle">Automated Alerts → Retraining Triggers</text>
+  <text x="150" y="50" class="db-highlight" text-anchor="middle">Real production metrics, not just drift</text>
+  <text x="1000" y="50" class="db-highlight" text-anchor="middle">APRA compliance ready</text>
+</svg>
+</body>
+</html>

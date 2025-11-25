@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOps Diagram - diagram_3_registration.html</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: 'Barlow', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap');
+
+      .db-title {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        fill: #1B3139;
+      }
+
+      .db-label {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        fill: #1B3139;
+      }
+
+      .db-text {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        fill: #666666;
+      }
+
+      .db-highlight {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        fill: #00A8E1;
+      }
+
+      .db-box {
+        fill: #FFFFFF;
+        stroke: #00A8E1;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-box-feature {
+        fill: #F5F5F5;
+        stroke: #1B3139;
+        stroke-width: 2;
+        rx: 8;
+      }
+
+      .db-arrow {
+        stroke: #00A8E1;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+
+      .db-arrow-highlight {
+        stroke: #FF3621;
+        stroke-width: 3;
+        fill: none;
+        marker-end: url(#arrowhead-lava);
+      }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00A8E1" />
+    </marker>
+
+    <marker id="arrowhead-lava" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF3621" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="400" fill="#FFFFFF"/>
+  <text x="600" y="40" class="db-title" text-anchor="middle">Model Registration to Unity Catalog</text>
+  <rect x="100" y="150" width="180" height="100" class="db-box"/>
+  <text x="190.0" y="170.0" class="db-label" text-anchor="middle">MLflow Run</text>
+  <text x="190.0" y="190.0" class="db-label" text-anchor="middle">Trained model</text>
+  <text x="190.0" y="210.0" class="db-label" text-anchor="middle">Artifacts</text>
+  <text x="190.0" y="230.0" class="db-label" text-anchor="middle">Metadata</text>
+  <line x1="280" y1="200" x2="380" y2="200" class="db-arrow"/>
+  <rect x="380" y="130" width="280" height="140" class="db-box"/>
+  <text x="520.0" y="160.0" class="db-label" text-anchor="middle">Unity Catalog Registry</text>
+  <text x="520.0" y="180.0" class="db-label" text-anchor="middle">catalog.schema.model</text>
+  <text x="520.0" y="200.0" class="db-label" text-anchor="middle">Version N</text>
+  <text x="520.0" y="220.0" class="db-label" text-anchor="middle">Full lineage</text>
+  <text x="520.0" y="240.0" class="db-label" text-anchor="middle">Tags + Description</text>
+  <line x1="660" y1="200" x2="760" y2="200" class="db-arrow"/>
+  <rect x="760" y="100" width="200" height="220" class="db-box"/>
+  <text x="860.0" y="140.0" class="db-label" text-anchor="middle">@Challenger</text>
+  <text x="860.0" y="160.0" class="db-label" text-anchor="middle">(new model)</text>
+  <text x="860.0" y="180.0" class="db-label" text-anchor="middle"></text>
+  <text x="860.0" y="200.0" class="db-label" text-anchor="middle">@Champion</text>
+  <text x="860.0" y="220.0" class="db-label" text-anchor="middle">(production)</text>
+  <text x="860.0" y="240.0" class="db-label" text-anchor="middle"></text>
+  <text x="860.0" y="260.0" class="db-label" text-anchor="middle">@Previous</text>
+  <text x="860.0" y="280.0" class="db-label" text-anchor="middle">(rollback)</text>
+  <text x="600" y="340" class="db-highlight" text-anchor="middle">Governance: Champion/Challenger pattern</text>
+</svg>
+</body>
+</html>

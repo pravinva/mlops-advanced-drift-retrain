@@ -349,7 +349,7 @@
 # MAGIC - Cost efficiency is priority
 # MAGIC
 # MAGIC **Example:** Weekly churn scoring
-# MAGIC - **Batch approach:** 12 minutes for 2.4M customers, $10/week
+# MAGIC - **Batch approach:** 12 minutes for millions of records, $10/week
 # MAGIC - **Endpoint approach:** 24/7 compute, $300+/week
 # MAGIC - **Savings:** 97% cost reduction
 # MAGIC
@@ -383,7 +383,7 @@
 # MAGIC **Performance:**
 # MAGIC - Distributes across 200+ Spark partitions
 # MAGIC - Processes 200K customers/minute
-# MAGIC - 12 minutes for 2.4M customers
+# MAGIC - 12 minutes for millions of records
 # MAGIC - Alternative sequential scoring: 16+ hours
 
 # COMMAND ----------

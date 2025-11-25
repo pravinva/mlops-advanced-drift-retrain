@@ -320,7 +320,7 @@ def generate_diagram_5():
 def generate_diagram_6():
     """Diagram 6: Batch Inference at Scale"""
     svg = generate_svg_header(1200, 500)
-    svg += title("Batch Inference: Distributed Scoring at 2.4M Scale")
+    svg += title("Batch Inference: Distributed Scoring at large-scale Scale")
 
     # Champion model
     svg += box(100, 150, 220, 80, "Unity Catalog\\n@Champion\\nModel")
@@ -333,7 +333,7 @@ def generate_diagram_6():
     # Distributed scoring
     svg += box(700, 100, 420, 180, "", "db-box-feature")
     svg += f'  <text x="910" y="130" class="db-label" text-anchor="middle">Distributed Spark Scoring</text>\n'
-    svg += f'  <text x="720" y="160" class="db-text">• 2.4M customers in 200+ partitions</text>\n'
+    svg += f'  <text x="720" y="160" class="db-text">• large-scale customers in 200+ partitions</text>\n'
     svg += f'  <text x="720" y="185" class="db-text">• Parallel execution across cluster</text>\n'
     svg += f'  <text x="720" y="210" class="db-text">• 12 minutes end-to-end</text>\n'
     svg += f'  <text x="720" y="235" class="db-text">• Output: Delta table with predictions</text>\n'

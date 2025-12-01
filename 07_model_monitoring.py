@@ -313,13 +313,13 @@ for days_back in range(14, 0, -1):
 
     drift_factor = (14 - days_back) / 14  # 0 to 1
 
-    # Apply progressive drift
-    batch_df['MonthlyCharges'] = batch_df['MonthlyCharges'] * (1 + drift_factor * 0.3)  # +30% increase
-    batch_df['tenure'] = batch_df['tenure'] * (1 - drift_factor * 0.25)  # -25% decrease
+    # Apply progressive drift (AGGRESSIVE settings to trigger retraining)
+    batch_df['MonthlyCharges'] = batch_df['MonthlyCharges'] * (1 + drift_factor * 0.6)  # +60% increase
+    batch_df['tenure'] = batch_df['tenure'] * (1 - drift_factor * 0.5)  # -50% decrease
 
-    # Shift to month-to-month contracts
-    if drift_factor > 0.5:
-        mask = np.random.random(len(batch_df)) < (drift_factor * 0.3)
+    # Shift to month-to-month contracts (higher rate)
+    if drift_factor > 0.3:  # Start earlier
+        mask = np.random.random(len(batch_df)) < (drift_factor * 0.6)  # More aggressive
         batch_df.loc[mask, 'Contract_Month_to_month'] = 1
         batch_df.loc[mask, 'Contract_One_year'] = 0
         batch_df.loc[mask, 'Contract_Two_year'] = 0

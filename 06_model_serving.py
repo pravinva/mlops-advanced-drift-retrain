@@ -207,8 +207,8 @@ token = dbutils.notebook.entry_point.getDbutils().notebook().getContext().apiTok
 test_df = spark.table(test_table).limit(1)
 test_pdf = test_df.toPandas()
 
-feature_cols = [col for col in test_pdf.columns if col not in ['customerID', 'churn']]
-test_input = test_pdf[feature_cols].to_dict(orient='records')[0]
+feature_cols = [col for col in test_pdf.columns if col not in ['customerID', 'churn', 'ingestion_timestamp', 'source']]
+test_input = {k: (v.isoformat() if hasattr(v, 'isoformat') else v) for k, v in test_pdf[feature_cols].to_dict(orient='records')[0].items()}
 
 headers = {
     "Authorization": f"Bearer {token}",

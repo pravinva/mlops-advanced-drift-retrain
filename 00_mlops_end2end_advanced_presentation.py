@@ -4,7 +4,7 @@
 # MAGIC
 # MAGIC ## Production-Grade ML System with Automated Drift Detection and Retraining
 # MAGIC
-# MAGIC <img src="https://github.com/pravinva/mlops-advanced-drift-retrain/raw/main/diagrams/mlops-advanced-0-overview.png" width="1200px" style="float: right; margin-left: 10px" />
+# MAGIC <img src="files/diagrams/mlops-advanced-0-overview.png" width="1200px" style="float: right; margin-left: 10px" />
 # MAGIC
 # MAGIC Building production ML systems requires more than just training models. This comprehensive implementation demonstrates enterprise-grade MLOps practices including:
 # MAGIC
@@ -41,7 +41,7 @@
 # MAGIC %md
 # MAGIC ## Architecture Overview
 # MAGIC
-# MAGIC <img src="https://github.com/pravinva/mlops-advanced-drift-retrain/raw/main/diagrams/mlops-advanced-0-overview.png" width="1200px" />
+# MAGIC <img src="files/diagrams/mlops-advanced-0-overview.png" width="1200px" />
 # MAGIC
 # MAGIC ### The Complete MLOps Loop
 # MAGIC
@@ -101,38 +101,33 @@
 # MAGIC %md
 # MAGIC ## Notebook Structure and Workflow
 # MAGIC
-# MAGIC This implementation is organized into 11 notebooks, each handling a specific phase of the MLOps lifecycle:
-# MAGIC
-# MAGIC ### Setup and Configuration
-# MAGIC | Notebook | Purpose | Key Outputs |
-# MAGIC |----------|---------|-------------|
-# MAGIC | `00-setup` | Configuration and initialization | Catalog, schema, bronze data |
+# MAGIC This implementation is organized into 10 notebooks, each handling a specific phase of the MLOps lifecycle:
 # MAGIC
 # MAGIC ### Model Development
 # MAGIC | Notebook | Purpose | Key Outputs |
 # MAGIC |----------|---------|-------------|
-# MAGIC | `01-features` | Feature engineering with Feature Store | Feature tables, train/test splits |
-# MAGIC | `02-training` | Hyperparameter optimization and training | Trained model, MLflow run |
-# MAGIC | `03a-deployment` | Automated job creation | Orchestration job |
-# MAGIC | `03b-registration` | Model registration to Unity Catalog | Model version, Challenger alias |
+# MAGIC | `01_feature_engineering` | Feature engineering with Feature Store | Feature tables, train/test splits |
+# MAGIC | `02_model_training_hpo` | Hyperparameter optimization and training | Trained model, MLflow run |
+# MAGIC | `03_model_registration` | Model registration to Unity Catalog | Model version, Challenger alias |
 # MAGIC
 # MAGIC ### Model Validation and Promotion
 # MAGIC | Notebook | Purpose | Key Outputs |
 # MAGIC |----------|---------|-------------|
-# MAGIC | `04a-validation` | 7-stage automated validation | Quality gate results |
-# MAGIC | `04b-approval` | Automated promotion workflow | Champion model |
+# MAGIC | `04a_challenger_validation` | 7-stage automated validation | Quality gate results |
+# MAGIC | `04b_challenger_approval` | Automated promotion workflow | Champion model |
 # MAGIC
 # MAGIC ### Production Deployment
 # MAGIC | Notebook | Purpose | Key Outputs |
 # MAGIC |----------|---------|-------------|
-# MAGIC | `05-batch-inference` | Distributed batch scoring | Predictions, risk lists, reports |
-# MAGIC | `06-serving` | Real-time REST API endpoint | Serving endpoint, latency metrics |
+# MAGIC | `05_batch_inference` | Distributed batch scoring | Predictions, risk lists, reports |
+# MAGIC | `06_model_serving` | Real-time REST API endpoint | Serving endpoint, latency metrics |
 # MAGIC
 # MAGIC ### Monitoring and Retraining
 # MAGIC | Notebook | Purpose | Key Outputs |
 # MAGIC |----------|---------|-------------|
-# MAGIC | `07-monitoring` | Drift detection and performance tracking | Monitoring dashboard, alerts |
-# MAGIC | `08-retrain` | Automated retraining on drift | New Challenger model |
+# MAGIC | `07_model_monitoring` | Drift detection and performance tracking | Monitoring dashboard, alerts |
+# MAGIC | `08_automated_retraining` | Automated retraining on drift | New Challenger model |
+# MAGIC | `09_deployment_job` | Production orchestration job | Automated workflow |
 
 # COMMAND ----------
 
@@ -444,64 +439,59 @@
 # MAGIC
 # MAGIC ### Quick Start (First Time Users)
 # MAGIC
-# MAGIC 1. **Run Setup** - [00-setup]($./notebook-00-setup)
-# MAGIC    - Creates catalog, schema, loads sample data
-# MAGIC    - Sets up MLflow experiment
-# MAGIC    - 2-3 minutes
-# MAGIC
-# MAGIC 2. **Feature Engineering** - [01-features]($./notebook-01-features)
+# MAGIC 1. **Feature Engineering** - [01_feature_engineering]($./01_feature_engineering)
 # MAGIC    - Transforms raw data to ML features
 # MAGIC    - Creates train/test splits
 # MAGIC    - 3-5 minutes
 # MAGIC
-# MAGIC 3. **Train Model** - [02-training]($./notebook-02-training)
+# MAGIC 2. **Train Model** - [02_model_training_hpo]($./02_model_training_hpo)
 # MAGIC    - Hyperparameter optimization (50 trials)
 # MAGIC    - Trains final model
 # MAGIC    - 15-20 minutes
 # MAGIC
-# MAGIC 4. **Register Model** - [03b-registration]($./notebook-03b-registration)
+# MAGIC 3. **Register Model** - [03_model_registration]($./03_model_registration)
 # MAGIC    - Register to Unity Catalog
 # MAGIC    - Assign Challenger alias
 # MAGIC    - 2 minutes
 # MAGIC
-# MAGIC 5. **Validate Model** - [04a-validation]($./notebook-04a-validation)
+# MAGIC 4. **Validate Model** - [04a_challenger_validation]($./04a_challenger_validation)
 # MAGIC    - Run 7 quality gate tests
 # MAGIC    - Generate validation report
 # MAGIC    - 5-7 minutes
 # MAGIC
-# MAGIC 6. **Promote to Champion** - [04b-approval]($./notebook-04b-approval)
+# MAGIC 5. **Promote to Champion** - [04b_challenger_approval]($./04b_challenger_approval)
 # MAGIC    - Compare with existing Champion
 # MAGIC    - Auto-promote if tests pass
 # MAGIC    - 1-2 minutes
 # MAGIC
 # MAGIC ### Production Deployment Options
 # MAGIC
-# MAGIC **Option A: Batch Inference** - [05-batch-inference]($./notebook-05-batch-inference)
+# MAGIC **Option A: Batch Inference** - [05_batch_inference]($./05_batch_inference)
 # MAGIC - For periodic scoring (daily/weekly)
 # MAGIC - Cost-efficient for high volume
 # MAGIC - 5-10 minutes setup + scoring time
 # MAGIC
-# MAGIC **Option B: Real-Time Serving** - [06-serving]($./notebook-06-serving)
+# MAGIC **Option B: Real-Time Serving** - [06_model_serving]($./06_model_serving)
 # MAGIC - For on-demand predictions
 # MAGIC - REST API endpoint
 # MAGIC - 15-20 minutes (endpoint deployment)
 # MAGIC
 # MAGIC ### Monitoring and Maintenance
 # MAGIC
-# MAGIC 7. **Enable Monitoring** - [07-monitoring]($./notebook-07-monitoring)
+# MAGIC 6. **Enable Monitoring** - [07_model_monitoring]($./07_model_monitoring)
 # MAGIC    - Set up Lakehouse Monitoring
 # MAGIC    - Configure drift detection
 # MAGIC    - Simulate drift for testing
 # MAGIC    - 20-30 minutes
 # MAGIC
-# MAGIC 8. **Automated Retraining** - [08-retrain]($./notebook-08-retrain)
+# MAGIC 7. **Automated Retraining** - [08_automated_retraining]($./08_automated_retraining)
 # MAGIC    - Trigger when drift detected
 # MAGIC    - Or run on schedule (weekly/monthly)
 # MAGIC    - 15-20 minutes
 # MAGIC
 # MAGIC ### Advanced Workflows
 # MAGIC
-# MAGIC **Automated Pipeline** - [03a-deployment]($./notebook-03a-deployment)
+# MAGIC **Automated Pipeline** - [09_deployment_job]($./09_deployment_job)
 # MAGIC - Creates Databricks Job for full pipeline
 # MAGIC - Schedule for automated execution
 # MAGIC - Orchestrates notebooks 01 → 02 → 03b → 04a
@@ -869,29 +859,27 @@
 # MAGIC
 # MAGIC Click below to start your journey:
 # MAGIC
-# MAGIC ### [→ Setup and Configuration (00-setup)]($./notebook-00-setup)
-# MAGIC
 # MAGIC ---
 # MAGIC
 # MAGIC ### Quick Links
 # MAGIC
 # MAGIC **Core Workflow:**
-# MAGIC - [01-Feature Engineering]($./notebook-01-features)
-# MAGIC - [02-Model Training]($./notebook-02-training)
-# MAGIC - [03b-Model Registration]($./notebook-03b-registration)
-# MAGIC - [04a-Validation]($./notebook-04a-validation)
-# MAGIC - [04b-Approval]($./notebook-04b-approval)
+# MAGIC - [01-Feature Engineering]($./01_feature_engineering)
+# MAGIC - [02-Model Training]($./02_model_training_hpo)
+# MAGIC - [03-Model Registration]($./03_model_registration)
+# MAGIC - [04a-Validation]($./04a_challenger_validation)
+# MAGIC - [04b-Approval]($./04b_challenger_approval)
 # MAGIC
 # MAGIC **Production Deployment:**
-# MAGIC - [05-Batch Inference]($./notebook-05-batch-inference)
-# MAGIC - [06-Real-time Serving]($./notebook-06-serving)
+# MAGIC - [05-Batch Inference]($./05_batch_inference)
+# MAGIC - [06-Real-time Serving]($./06_model_serving)
 # MAGIC
 # MAGIC **Monitoring & Maintenance:**
-# MAGIC - [07-Monitoring & Drift Detection]($./notebook-07-monitoring)
-# MAGIC - [08-Automated Retraining]($./notebook-08-retrain)
+# MAGIC - [07-Monitoring & Drift Detection]($./07_model_monitoring)
+# MAGIC - [08-Automated Retraining]($./08_automated_retraining)
 # MAGIC
 # MAGIC **Automation:**
-# MAGIC - [03a-Deployment Job]($./notebook-03a-deployment)
+# MAGIC - [09-Deployment Job]($./09_deployment_job)
 # MAGIC
 # MAGIC ---
 # MAGIC

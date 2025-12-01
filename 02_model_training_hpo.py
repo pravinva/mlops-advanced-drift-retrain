@@ -53,7 +53,7 @@ train_pdf = train_df.toPandas()
 test_pdf = test_df.toPandas()
 
 feature_cols = [col for col in train_pdf.columns
-                if col not in ['customerID', 'churn']]
+                if col not in ['customerID', 'churn', 'ingestion_timestamp', 'source']]
 
 X_train = train_pdf[feature_cols]
 y_train = train_pdf['churn']

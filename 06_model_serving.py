@@ -237,10 +237,17 @@ else:
 
 # DBTITLE 1,Latency Benchmark
 import numpy as np
+import pandas as pd
+import time
 
 print("Running latency benchmark (20 requests)...")
 
 latencies = []
+
+# Convert datetime columns to ISO format strings
+for col in test_pdf[feature_cols].select_dtypes(include=['datetime64[ns]']).columns:
+    test_pdf[col] = test_pdf[col].apply(lambda x: x.isoformat() if not pd.isnull(x) else None)
+
 single_record = test_pdf[feature_cols].to_dict(orient='records')[0]
 payload = {"dataframe_records": [single_record]}
 
